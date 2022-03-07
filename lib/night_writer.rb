@@ -1,18 +1,13 @@
-handle = File.open(ARGV[0],"r")
+require './lib/alphabet'
 
-incoming_text = handle.read
+  class NightWriter
 
-handle.close
+    attr_reader :message, :braille, :a
+    def initialize(message)
+      @message = message
+      @a = Alphabet.new
+      @braille = a.alphabet_hash[message.to_sym]
+      # require "pry"; binding.pry
+    end
 
-cap_incoming_text = incoming_text.upcase
-count_incoming_text = cap_incoming_text.length
-
-writer = File.open(ARGV[1], "w")
-
-
-writer.write(cap_incoming_text)
-
-writer.close
-
-puts "Created #{ARGV[1]} containing #{count_incoming_text} characters"
-# puts "Created #{}"
+end
