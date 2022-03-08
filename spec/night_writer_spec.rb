@@ -20,4 +20,10 @@ require './lib/night_writer'
     expect(writer.braille).to eq(expected)
   end
 
+  it 'given more than 80 characters, output puts on new line' do
+    message = "oudxofqkuvhvujwyiftiwbauxigogfkmhbxjmjdrhgkijgpwiewxwjvfhcaajhcnnpyxyohjrkrussomcgstctaajhvfyckrmyqg"
+    writer = NightWriter.new(message)
+    expect(writer.braille).to include("\n")
+  end
+
 end
