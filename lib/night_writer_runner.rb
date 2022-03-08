@@ -6,15 +6,13 @@ incoming_text = handle.read
 
 handle.close
 
-count_incoming_text = incoming_text.length
-
-night_writer = NightWriter.new(incoming_text)
-
+night_writer = NightWriter.new(incoming_text.chomp)
+# require "pry"; binding.pry
 writer = File.open(ARGV[1], "w")
 
 
-# writer.write(count_incoming_text)
+writer.write(night_writer.braille)
 
-# writer.close
-#
-# puts "Created #{ARGV[1]} containing #{count_incoming_text} characters"
+writer.close
+
+puts "Created #{ARGV[1]} containing #{night_writer.braille.length} characters"
