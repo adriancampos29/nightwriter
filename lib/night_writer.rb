@@ -6,8 +6,24 @@ require './lib/alphabet'
     def initialize(message)
       @message = message
       @a = Alphabet.new
-      @braille = a.alphabet_hash[message.to_sym]
+      @braille = get_braille(message)
       # require "pry"; binding.pry
     end
+
+    def get_braille(message)
+      if message.length > 1
+        split_message = message.gsub(/\s+/, "").split("")
+        accumalator = []
+        split_message.each do |message|
+          accumalator << a.alphabet_hash[message.to_sym]
+        end
+        accumalator
+      else
+        [a.alphabet_hash[message.to_sym]]
+      end
+    end
+
+
+
 
 end
