@@ -14,7 +14,10 @@ require './lib/alphabet'
       if message.length > 1
         split_message = message.gsub(/\s+/, "").split("")
         accumalator = []
-        split_message.each do |message|
+        split_message.each_with_index do |message, index|
+          if index == 79
+            accumalator << "\n"
+          end 
           accumalator << a.alphabet_hash[message.to_sym]
         end
         accumalator
